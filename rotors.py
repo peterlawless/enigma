@@ -46,10 +46,17 @@ class Rotor:
             self.next_rotor.rotate()
         self.wiring.append(x)
 
+    # Since the shift of each rotor is effectively a Ceasar Cipher, the
+    # .encrypt_connect() method is simply performing a Ceasar Cipher on
+    # an input number according to the shift in the contact whose index is the
+    # same as incoming number.
     def encrypt_connect(self, num):
         x = (num + self.wiring[num][0]) % len(self.alphabet)
         return x
 
+    # Effectively does the reverse of the .encrypt_connect() method by
+    # finding which shift would correspond to the input number and returns
+    # that contact's index.
     def decrypt_connect(self, num):
         for idx, wire in enumerate(self.wiring):
             if ((idx + wire[0]) % len(self.alphabet)) == num:
@@ -91,6 +98,10 @@ class RotorV(Rotor):
     turnover = ['Z']
 
 
+# Rotors VI, VII, and VIII were added later in the war due to a belief that
+# Enigma had been compromised (...it had...). The key differences between them
+# and previous rotors were that they had two turnover points rather than just
+# one, meaning it would turnover the neighboring rotor twice as frequently.
 class RotorVI(Rotor):
     shift = ['J', 'P', 'G', 'V', 'O', 'U', 'M', 'F', 'Y', 'Q', 'B', 'E', 'N',
              'H', 'Z', 'R', 'D', 'K', 'A', 'S', 'X', 'L', 'I', 'C', 'T', 'W']

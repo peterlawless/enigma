@@ -75,7 +75,6 @@ def main():
     rotor_selection = input("Enter your rotor labels (roman numerals) from left\
  to right (slow to fast rotor) separated by spaces:\n").upper()
 
-    # rotor_keys = rotor_selection.split(' ')
     match = re.search(r'^([IV]{,4})\s([IV]{,4})\s([IV]{,4})$', rotor_selection)
 
     if match:
