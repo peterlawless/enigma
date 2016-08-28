@@ -85,11 +85,12 @@ def main():
 
     setting_selection = input("Now enter the intial settings of your rotors\
  (integers 1-26) in the same order separated by spaces:\n")
-    match = re.search(r'^([1-2]?[1-9])\s([1-2]?[1-9])\s([1-2]?[1-9])$',
+    match = re.search(r'^([1-2]?[0-9])\s([1-2]?[0-9])\s([1-2]?[0-9])$',
                       setting_selection)
 
     if match:
         slow_rotor_set, middle_rotor_set, fast_rotor_set = match.groups()
+
         initial_settings = (int(slow_rotor_set), int(middle_rotor_set),
                             int(fast_rotor_set))
 
